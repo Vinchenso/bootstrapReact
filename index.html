@@ -20,19 +20,26 @@
         //NavBar Component
         var Navbar = React.createClass({
           propTypes: {
-            brand: React.PropTypes.string.isRequired
+            brand: React.PropTypes.string.isRequired,
+            color: React.PropTypes.string
           },
 
           getDefaultProps: function(){
             return {
-              brand: 'My Website'
+              brand: 'My Website',
+              color: 'light'
             }
           },
 
           render: function(){
+            if(this.props.color == 'dark'){
+              var NavClass = "navbar navbar-inverse";
+            } else{
+              var NavClass = "navbar navbar-default";
+            }
             return(
-              <div>
-                  <nav className="navbar navbar-default">
+                  <div>
+                  <nav className={NavClass}>
                       <div className="container-fluid">
                           <div className="navbar-header">
                               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -100,7 +107,7 @@
           render: function(){
             return(
               <div>
-                  <Navbar />
+                  <Navbar color = 'dark'/>
                   <Jumbotron />
                   <PageHome />
                   <Footer />
